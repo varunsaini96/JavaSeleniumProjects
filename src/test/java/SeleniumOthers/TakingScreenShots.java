@@ -13,6 +13,8 @@ import java.time.Duration;
 
 public class TakingScreenShots {
     public static void main(String[] args) {
+
+        String imagesFile = "C:\\Users\\saini\\Documents\\Projects\\Java\\JavaSelenium\\src\\test\\java\\images\\";
         WebDriver driver = new EdgeDriver();
         driver.get("https://www.flipkart.com/");
         driver.manage().window().maximize();
@@ -23,11 +25,22 @@ public class TakingScreenShots {
         searchItem.sendKeys("Iphone 16");
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.ENTER).perform();
+        //capture the screenshot for whole window
         TakesScreenshot ts = (TakesScreenshot) driver;
         File f = ts.getScreenshotAs(OutputType.FILE);
-        File fileDest = new File("C:/Users/saini/OneDrive/Documents/MCA/Full Stack/Java/JavaSelenium/src/main/java/SeleniumPractice/iphone16sc.png");
+        File fileDest = new File(imagesFile+"iphone16sc.png");
         try {
             FileHandler.copy(f,fileDest);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        //capture the screenshot of a particular section
+        WebElement section = driver.findElement(By.xpath("//div[@data-id='MOBH4DQF849HCG6G']"));
+        File sectionFile = section.getScreenshotAs(OutputType.FILE);
+        File sectionFileDir = new File(imagesFile+"sectionImage.png");
+        try {
+            FileHandler.copy(sectionFile,sectionFileDir);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
