@@ -34,6 +34,7 @@ public class Deserialization {
 
         //Deserializing
         JSONPostReqestResponse responseClass = responseBody.as(JSONPostReqestResponse.class);
+        System.out.println(responseClass.name);
 
         Assert.assertEquals(responseClass.name, "Tony","check for name.");
         Assert.assertEquals(responseClass.job, "Architect","check for job.");
