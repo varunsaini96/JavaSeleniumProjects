@@ -1,6 +1,5 @@
 package Cucumber;
 
-import io.cucumber.java.an.E;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
